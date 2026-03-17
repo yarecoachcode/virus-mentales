@@ -12,422 +12,419 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="text/babel" data-type="module">
-      const { useState } = React;
-      const { BarChart, Bar, XAxis, YAxis, Cell, ResponsiveContainer, Tooltip } = Recharts;
+    <script type="text/babel">
+const { useState } = React;
+const { BarChart, Bar, XAxis, YAxis, Cell, ResponsiveContainer, Tooltip } = Recharts;
 
-      const PARTS = [
-        {
-          id: "bloqueos", name: "Bloqueos Inconscientes", emoji: "🔒",
-          color: "#6366f1", g: ["#6366f1","#8b5cf6"],
-          subs: [
-            { name: "Síndrome del Impostor", questions: [
-              "Me cuesta aceptar cumplidos o reconocimientos.",
-              "Siento que mis logros han sido por suerte.",
-              "A menudo pienso que no estoy lo suficientemente preparado/a.",
-              "Tengo miedo de que otros descubran que no sé tanto.",
-            ]},
-            { name: "Miedo al Fracaso", questions: [
-              "Pienso mucho en lo que podría salir mal.",
-              "Me paralizo cuando tengo que tomar una gran decisión.",
-              "Prefiero no intentarlo antes que fallar.",
-              "Me autoexijo demasiado por miedo a equivocarme.",
-            ]},
-            { name: "Miedo al Éxito", questions: [
-              "Me asusta lo que pueda cambiar si tengo éxito.",
-              "Me saboteo cuando las cosas empiezan a ir bien.",
-              "Siento culpa por avanzar más que otros.",
-              "Me da miedo no poder sostener el éxito.",
-            ]},
-            { name: "Visibilidad", questions: [
-              "Me incomoda hablar de mis logros.",
-              "Evito mostrarme en redes sociales.",
-              "Me da miedo hacer lives o grabarme.",
-              "Siento ansiedad cuando pienso en exponerme.",
-            ]},
-            { name: "Autoestima / Valor Personal", questions: [
-              "Me cuesta reconocer mis fortalezas.",
-              "Dudo de mi capacidad para tener éxito.",
-              "Necesito que me validen para sentirme seguro/a.",
-              "Me siento menos que otras personas.",
-            ]},
-          ],
-        },
-        {
-          id: "heridas", name: "Heridas de la Infancia", emoji: "💔",
-          color: "#f59e0b", g: ["#f59e0b","#ef4444"],
-          subs: [
-            { name: "Herida de Rechazo", questions: [
-              "Me cuesta aceptar que soy importante para los demás.",
-              "Prefiero pasar desapercibido/a en los grupos.",
-              "Me da miedo sobresalir o destacar.",
-              "Me aíslo cuando me siento inseguro/a.",
-            ]},
-            { name: "Herida de Abandono", questions: [
-              "Me cuesta estar solo/a sin sentir ansiedad.",
-              "Necesito tener a alguien que me apoye todo el tiempo.",
-              "Me siento vacío/a cuando estoy sin compañía.",
-              "Me aferro a personas aunque no me hagan bien.",
-            ]},
-            { name: "Herida de Humillación", questions: [
-              "Me avergüenzo fácilmente de lo que hago o digo.",
-              "Casi nunca pido ayuda, prefiero cargar con todo.",
-              "Me siento culpable por desear cosas para mí.",
-              "Tolero mucho por miedo a molestar a los demás.",
-            ]},
-            { name: "Herida de Traición", questions: [
-              "Me cuesta confiar en las personas.",
-              "Me molesta que otros no hagan las cosas como yo.",
-              "Prefiero hacer las cosas solo/a para asegurarme que salgan bien.",
-              "Me frustra mucho la falta de compromiso en los demás.",
-            ]},
-            { name: "Herida de Injusticia", questions: [
-              "Me exijo demasiado a mí mismo/a.",
-              "No me permito mostrar debilidad.",
-              "Me molesta mucho la mediocridad.",
-              "Prefiero hacer las cosas yo porque los demás no las hacen bien.",
-            ]},
-          ],
-        },
-        {
-          id: "interferencias", name: "Interferencias Inconscientes", emoji: "⚡",
-          color: "#10b981", g: ["#10b981","#06b6d4"],
-          subs: [
-            { name: '"Debo pagar lo que hice"', questions: [
-              "Me cuesta disfrutar sin sentir culpa.",
-              "Siento que tengo que esforzarme mucho para merecer algo.",
-              "Me saboteo cuando algo bueno está por llegar.",
-              "Me siento en deuda con los demás.",
-            ]},
-            { name: '"Soy un perdedor"', questions: [
-              "Siento que no soy tan bueno/a como los demás.",
-              "Siempre dudo de que voy a lograrlo.",
-              "Pienso que fracasar es lo normal para mí.",
-              "Me cuesta mantener el entusiasmo por mis proyectos.",
-            ]},
-            { name: '"No lo merezco"', questions: [
-              "Me incomoda cuando me felicitan.",
-              "Siento que no soy suficiente para cobrar bien.",
-              "Me cuesta permitirme disfrutar de cosas buenas.",
-              'Me autoexijo demasiado para "merecer" descansar.',
-            ]},
-            { name: '"No sé hacerlo bien / No puedo"', questions: [
-              "Me paralizo cuando enfrento algo nuevo.",
-              "Siento que no tengo lo necesario para emprender.",
-              "Me cuesta avanzar si no tengo todo claro.",
-              "Prefiero que otros lideren.",
-            ]},
-            { name: '"Hago daño a los demás"', questions: [
-              "Me da miedo ser exitoso/a y que los demás se alejen.",
-              "Siento que al cobrar mucho, estoy abusando.",
-              "No quiero liderar porque me da miedo imponerme.",
-              "Me da culpa tener más que otros.",
-            ]},
-          ],
-        },
-      ];
+const PARTS = [
+  {
+    id: "bloqueos", name: "Bloqueos Inconscientes", emoji: "🔒",
+    color: "#6366f1", g: ["#6366f1","#8b5cf6"],
+    subs: [
+      { name: "Síndrome del Impostor", questions: [
+        "Me cuesta aceptar cumplidos o reconocimientos.",
+        "Siento que mis logros han sido por suerte.",
+        "A menudo pienso que no estoy lo suficientemente preparado/a.",
+        "Tengo miedo de que otros descubran que no sé tanto.",
+      ]},
+      { name: "Miedo al Fracaso", questions: [
+        "Pienso mucho en lo que podría salir mal.",
+        "Me paralizo cuando tengo que tomar una gran decisión.",
+        "Prefiero no intentarlo antes que fallar.",
+        "Me autoexijo demasiado por miedo a equivocarme.",
+      ]},
+      { name: "Miedo al Éxito", questions: [
+        "Me asusta lo que pueda cambiar si tengo éxito.",
+        "Me saboteo cuando las cosas empiezan a ir bien.",
+        "Siento culpa por avanzar más que otros.",
+        "Me da miedo no poder sostener el éxito.",
+      ]},
+      { name: "Visibilidad", questions: [
+        "Me incomoda hablar de mis logros.",
+        "Evito mostrarme en redes sociales.",
+        "Me da miedo hacer lives o grabarme.",
+        "Siento ansiedad cuando pienso en exponerme.",
+      ]},
+      { name: "Autoestima / Valor Personal", questions: [
+        "Me cuesta reconocer mis fortalezas.",
+        "Dudo de mi capacidad para tener éxito.",
+        "Necesito que me validen para sentirme seguro/a.",
+        "Me siento menos que otras personas.",
+      ]},
+    ],
+  },
+  {
+    id: "heridas", name: "Heridas de la Infancia", emoji: "💔",
+    color: "#f59e0b", g: ["#f59e0b","#ef4444"],
+    subs: [
+      { name: "Herida de Rechazo", questions: [
+        "Me cuesta aceptar que soy importante para los demás.",
+        "Prefiero pasar desapercibido/a en los grupos.",
+        "Me da miedo sobresalir o destacar.",
+        "Me aíslo cuando me siento inseguro/a.",
+      ]},
+      { name: "Herida de Abandono", questions: [
+        "Me cuesta estar solo/a sin sentir ansiedad.",
+        "Necesito tener a alguien que me apoye todo el tiempo.",
+        "Me siento vacío/a cuando estoy sin compañía.",
+        "Me aferro a personas aunque no me hagan bien.",
+      ]},
+      { name: "Herida de Humillación", questions: [
+        "Me avergüenzo fácilmente de lo que hago o digo.",
+        "Casi nunca pido ayuda, prefiero cargar con todo.",
+        "Me siento culpable por desear cosas para mí.",
+        "Tolero mucho por miedo a molestar a los demás.",
+      ]},
+      { name: "Herida de Traición", questions: [
+        "Me cuesta confiar en las personas.",
+        "Me molesta que otros no hagan las cosas como yo.",
+        "Prefiero hacer las cosas solo/a para asegurarme que salgan bien.",
+        "Me frustra mucho la falta de compromiso en los demás.",
+      ]},
+      { name: "Herida de Injusticia", questions: [
+        "Me exijo demasiado a mí mismo/a.",
+        "No me permito mostrar debilidad.",
+        "Me molesta mucho la mediocridad.",
+        "Prefiero hacer las cosas yo porque los demás no las hacen bien.",
+      ]},
+    ],
+  },
+  {
+    id: "interferencias", name: "Interferencias Inconscientes", emoji: "⚡",
+    color: "#10b981", g: ["#10b981","#06b6d4"],
+    subs: [
+      { name: '"Debo pagar lo que hice"', questions: [
+        "Me cuesta disfrutar sin sentir culpa.",
+        "Siento que tengo que esforzarme mucho para merecer algo.",
+        "Me saboteo cuando algo bueno está por llegar.",
+        "Me siento en deuda con los demás.",
+      ]},
+      { name: '"Soy un perdedor"', questions: [
+        "Siento que no soy tan bueno/a como los demás.",
+        "Siempre dudo de que voy a lograrlo.",
+        "Pienso que fracasar es lo normal para mí.",
+        "Me cuesta mantener el entusiasmo por mis proyectos.",
+      ]},
+      { name: '"No lo merezco"', questions: [
+        "Me incomoda cuando me felicitan.",
+        "Siento que no soy suficiente para cobrar bien.",
+        "Me cuesta permitirme disfrutar de cosas buenas.",
+        'Me autoexijo demasiado para "merecer" descansar.',
+      ]},
+      { name: '"No sé hacerlo bien / No puedo"', questions: [
+        "Me paralizo cuando enfrento algo nuevo.",
+        "Siento que no tengo lo necesario para emprender.",
+        "Me cuesta avanzar si no tengo todo claro.",
+        "Prefiero que otros lideren.",
+      ]},
+      { name: '"Hago daño a los demás"', questions: [
+        "Me da miedo ser exitoso/a y que los demás se alejen.",
+        "Siento que al cobrar mucho, estoy abusando.",
+        "No quiero liderar porque me da miedo imponerme.",
+        "Me da culpa tener más que otros.",
+      ]},
+    ],
+  },
+];
 
-      const ALL_Q = [];
-      PARTS.forEach((p, pi) => {
-        p.subs.forEach((s, si) => {
-          s.questions.forEach((q, qi) => {
-            ALL_Q.push({ text: q, partIndex: pi, subIndex: si, subName: s.name });
-          });
-        });
+const ALL_Q = [];
+PARTS.forEach((p, pi) => {
+  p.subs.forEach((s, si) => {
+    s.questions.forEach((q, qi) => {
+      ALL_Q.push({ text: q, partIndex: pi, subIndex: si, subName: s.name });
+    });
+  });
+});
+const TOTAL = ALL_Q.length;
+
+const SCALE = [
+  { value: 0, label: "Nunca", emoji: "😌" },
+  { value: 3, label: "A veces", emoji: "😐" },
+  { value: 5, label: "Siempre", emoji: "😣" },
+];
+
+const getLevel = (score, max) => {
+  const pct = score / max;
+  if (pct < 0.4) return { label: "Latente", color: "#10b981" };
+  if (pct < 0.7) return { label: "Activo", color: "#f59e0b" };
+  return { label: "Dominante", color: "#ef4444" };
+};
+
+const getLevelDesc = (label) => ({
+  "Latente": "Este patrón existe pero no está activo. Con atención temprana puedes evitar que escale.",
+  "Activo": "Este patrón está operando en tu vida y afectando tus resultados. Es el momento ideal para trabajarlo.",
+  "Dominante": "Este patrón tiene un impacto significativo en tu vida. Requiere atención prioritaria y acompañamiento.",
+}[label]);
+
+function App() {
+  const [screen, setScreen] = useState("welcome");
+  const [cur, setCur] = useState(0);
+  const [answers, setAnswers] = useState({});
+  const [selected, setSelected] = useState(null);
+  const [visible, setVisible] = useState(true);
+  const [userInfo, setUserInfo] = useState({ name: "", email: "" });
+  const [sending, setSending] = useState(false);
+
+  const q = ALL_Q[cur] || {};
+  const part = PARTS[q.partIndex] || PARTS[0];
+  const progress = (cur / TOTAL) * 100;
+
+  const partScores = PARTS.map((p, pi) => {
+    let total = 0, max = 0;
+    const subScores = p.subs.map((s, si) => {
+      let sub = 0;
+      s.questions.forEach((qq) => {
+        const idx = ALL_Q.findIndex(item => item.partIndex === pi && item.subIndex === si && item.text === qq);
+        sub += answers[idx] || 0;
       });
-      const TOTAL = ALL_Q.length;
+      max += s.questions.length * 5;
+      total += sub;
+      const lv = getLevel(sub, s.questions.length * 5);
+      return { name: s.name, score: sub, max: s.questions.length * 5, ...lv };
+    });
+    const lv = getLevel(total, max);
+    return { ...p, score: total, max, subScores, ...lv };
+  });
 
-      const SCALE = [
-        { value: 0, label: "Nunca", emoji: "😌" },
-        { value: 3, label: "A veces", emoji: "😐" },
-        { value: 5, label: "Siempre", emoji: "😣" },
-      ];
+  const radarData = partScores.map(p => ({
+    subject: p.name.split(" ")[0],
+    score: Math.round((p.score / p.max) * 100),
+    fullMark: 100,
+  }));
 
-      const getLevel = (score, max) => {
-        const pct = score / max;
-        if (pct < 0.4) return { label: "Latente", color: "#10b981" };
-        if (pct < 0.7) return { label: "Activo", color: "#f59e0b" };
-        return { label: "Dominante", color: "#ef4444" };
-      };
+  const dominant = [...partScores].sort((a, b) => b.score / b.max - a.score / a.max)[0];
 
-      const getLevelDesc = (label) => ({
-        "Latente": "Este patrón existe pero no está activo. Con atención temprana puedes evitar que escale.",
-        "Activo": "Este patrón está operando en tu vida y afectando tus resultados. Es el momento ideal para trabajarlo.",
-        "Dominante": "Este patrón tiene un impacto significativo en tu vida. Requiere atención prioritaria y acompañamiento.",
-      }[label]);
+  const submitToWeb3Forms = async (scores) => {
+    setSending(true);
+    try {
+      await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: "d5049613-19d0-4df9-8a2a-683d81ac46f4",
+          subject: "Nuevo resultado - Test de Virus Mentales",
+          from_name: userInfo.name,
+          email: userInfo.email,
+          bloqueos: scores[0].score + "/" + scores[0].max + " - " + scores[0].label,
+          heridas: scores[1].score + "/" + scores[1].max + " - " + scores[1].label,
+          interferencias: scores[2].score + "/" + scores[2].max + " - " + scores[2].label,
+        }),
+      });
+    } catch (e) { console.error(e); }
+    setSending(false);
+  };
 
-      function App() {
-        const [screen, setScreen] = useState("welcome");
-        const [cur, setCur] = useState(0);
-        const [answers, setAnswers] = useState({});
-        const [selected, setSelected] = useState(null);
-        const [visible, setVisible] = useState(true);
-        const [userInfo, setUserInfo] = useState({ name: "", email: "" });
-        const [sending, setSending] = useState(false);
-        const [sent, setSent] = useState(false);
+  const handleShowResults = () => {
+    if (!userInfo.name || !userInfo.email) return;
+    submitToWeb3Forms(partScores);
+    setScreen("results");
+  };
 
-        const q = ALL_Q[cur] || {};
-        const part = PARTS[q.partIndex] || PARTS[0];
-        const progress = (cur / TOTAL) * 100;
+  const go = (val) => {
+    setSelected(val);
+    setTimeout(() => {
+      setVisible(false);
+      setTimeout(() => {
+        const newAnswers = { ...answers, [cur]: val };
+        setAnswers(newAnswers);
+        if (cur + 1 < TOTAL) { setCur(c => c + 1); setSelected(null); }
+        else setScreen("capture");
+        setVisible(true);
+      }, 280);
+    }, 180);
+  };
 
-        const partScores = PARTS.map((p, pi) => {
-          let total = 0, max = 0;
-          const subScores = p.subs.map((s, si) => {
-            let sub = 0;
-            s.questions.forEach((qq) => {
-              const idx = ALL_Q.findIndex(item => item.partIndex === pi && item.subIndex === si && item.text === qq);
-              sub += answers[idx] || 0;
-            });
-            max += s.questions.length * 5;
-            total += sub;
-            const lv = getLevel(sub, s.questions.length * 5);
-            return { name: s.name, score: sub, max: s.questions.length * 5, ...lv };
-          });
-          const lv = getLevel(total, max);
-          return { ...p, score: total, max, subScores, ...lv };
-        });
+  const back = () => { if (cur === 0) return; setCur(c => c - 1); setSelected(answers[cur - 1] || null); };
 
-        const radarData = partScores.map(p => ({
-          subject: p.name.split(" ")[0],
-          score: Math.round((p.score / p.max) * 100),
-          fullMark: 100,
-        }));
+  if (screen === "welcome") return (
+    <div className="min-h-screen flex items-center justify-center p-6" style={{background:"#f8fafc"}}>
+      <div className="max-w-md w-full text-center">
+        <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6" style={{background:"#eef2ff",fontSize:48}}>🧠</div>
+        <h1 className="text-4xl font-black text-slate-800 mb-3 leading-tight">
+          Explorador de<br/><span style={{color:"#6366f1"}}>Virus Mentales</span>
+        </h1>
+        <p className="text-slate-500 text-base leading-relaxed mb-6">Descubre los patrones invisibles que frenan tu crecimiento personal y profesional.</p>
+        <div className="bg-white rounded-2xl shadow-xl p-5 mb-6 text-left space-y-3">
+          {[["🔒","Bloqueos Inconscientes","5 subcategorías · 20 preguntas"],["💔","Heridas de la Infancia","5 subcategorías · 20 preguntas"],["⚡","Interferencias Inconscientes","5 subcategorías · 20 preguntas"]].map(([e,t,s]) => (
+            <div key={t} className="flex items-center gap-3">
+              <span style={{fontSize:22}}>{e}</span>
+              <div><div className="font-semibold text-slate-700 text-sm">{t}</div><div className="text-slate-400 text-xs">{s}</div></div>
+            </div>
+          ))}
+        </div>
+        <p className="text-slate-400 text-xs mb-5">60 preguntas · ~8 minutos · Resultados inmediatos</p>
+        <button onClick={() => setScreen("quiz")} className="w-full py-4 rounded-2xl font-bold text-white text-lg shadow-lg" style={{background:"linear-gradient(135deg,#6366f1,#8b5cf6)"}}>
+          Iniciar Viaje →
+        </button>
+        <p className="text-slate-400 text-xs mt-3">Confidencial · Sin registro requerido</p>
+      </div>
+    </div>
+  );
 
-        const dominant = [...partScores].sort((a, b) => b.score / b.max - a.score / a.max)[0];
+  if (screen === "quiz") return (
+    <div className="min-h-screen flex flex-col p-4" style={{background:"#f8fafc"}}>
+      <div className="max-w-lg w-full mx-auto">
+        <div className="mb-5">
+          <div className="flex justify-between text-xs mb-1">
+            <span className="font-semibold" style={{color:part.color}}>{part.emoji} {part.name}</span>
+            <span className="text-slate-400">{cur + 1} / {TOTAL}</span>
+          </div>
+          <div className="w-full rounded-full h-2" style={{background:"#e2e8f0"}}>
+            <div className="h-2 rounded-full transition-all duration-500" style={{width:`${progress}%`,background:`linear-gradient(90deg,${part.g[0]},${part.g[1]})`}} />
+          </div>
+          <div className="text-xs text-slate-400 mt-1">{q.subName}</div>
+        </div>
 
-        const submitToWeb3Forms = async (scores) => {
-          setSending(true);
-          try {
-            const res = await fetch("https://api.web3forms.com/submit", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                access_key: "d5049613-19d0-4df9-8a2a-683d81ac46f4",
-                subject: "Nuevo resultado - Test de Virus Mentales",
-                from_name: userInfo.name,
-                email: userInfo.email,
-                bloqueos: `${scores[0].score}/${scores[0].max} - ${scores[0].label}`,
-                heridas: `${scores[1].score}/${scores[1].max} - ${scores[1].label}`,
-                interferencias: `${scores[2].score}/${scores[2].max} - ${scores[2].label}`,
-                subcategorias: scores.map(p => `\n${p.name}:\n` + p.subScores.map(s => `  ${s.name}: ${s.score}/${s.max} (${s.label})`).join("\n")).join("\n"),
-              }),
-            });
-            const data = await res.json();
-            if (data.success) setSent(true);
-          } catch (e) { console.error(e); }
-          setSending(false);
-        };
-
-        const handleShowResults = () => {
-          if (!userInfo.name || !userInfo.email) return;
-          setScreen("results");
-          submitToWeb3Forms(partScores);
-        };
-
-        const go = (val) => {
-          setSelected(val);
-          setTimeout(() => {
-            setVisible(false);
-            setTimeout(() => {
-              const newAnswers = { ...answers, [cur]: val };
-              setAnswers(newAnswers);
-              if (cur + 1 < TOTAL) { setCur(c => c + 1); setSelected(null); }
-              else setScreen("capture");
-              setVisible(true);
-            }, 280);
-          }, 180);
-        };
-
-        const back = () => { if (cur === 0) return; setCur(c => c - 1); setSelected(answers[cur - 1] ?? null); };
-
-        if (screen === "welcome") return (
-          <div className="min-h-screen flex items-center justify-center p-6" style={{background:"#f8fafc"}}>
-            <div className="max-w-md w-full text-center">
-              <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6" style={{background:"#eef2ff",fontSize:48}}>🧠</div>
-              <h1 className="text-4xl font-black text-slate-800 mb-3 leading-tight">
-                Explorador de<br/><span style={{color:"#6366f1"}}>Virus Mentales</span>
-              </h1>
-              <p className="text-slate-500 text-base leading-relaxed mb-6">Descubre los patrones invisibles que frenan tu crecimiento personal y profesional.</p>
-              <div className="bg-white rounded-2xl shadow-xl p-5 mb-6 text-left space-y-3">
-                {[["🔒","Bloqueos Inconscientes","5 subcategorías · 20 preguntas"],["💔","Heridas de la Infancia","5 subcategorías · 20 preguntas"],["⚡","Interferencias Inconscientes","5 subcategorías · 20 preguntas"]].map(([e,t,s]) => (
-                  <div key={t} className="flex items-center gap-3">
-                    <span style={{fontSize:22}}>{e}</span>
-                    <div><div className="font-semibold text-slate-700 text-sm">{t}</div><div className="text-slate-400 text-xs">{s}</div></div>
-                  </div>
-                ))}
-              </div>
-              <p className="text-slate-400 text-xs mb-5">60 preguntas · ~8 minutos · Resultados inmediatos</p>
-              <button onClick={() => setScreen("quiz")} className="w-full py-4 rounded-2xl font-bold text-white text-lg shadow-lg" style={{background:"linear-gradient(135deg,#6366f1,#8b5cf6)"}}>
-                Iniciar Viaje →
-              </button>
-              <p className="text-slate-400 text-xs mt-3">Confidencial · Sin registro requerido</p>
+        {cur === PARTS.slice(0,q.partIndex).reduce((a,p)=>a+p.subs.reduce((b,s)=>b+s.questions.length,0),0) && (
+          <div className="rounded-2xl p-4 mb-4 flex gap-3 items-start" style={{background:`${part.color}12`,border:`1px solid ${part.color}30`}}>
+            <span style={{fontSize:24,flexShrink:0}}>{part.emoji}</span>
+            <div>
+              <div className="font-bold text-sm mb-0.5" style={{color:part.color}}>{part.name}</div>
+              <p className="text-slate-600 text-xs leading-relaxed">{["Responde con honestidad cómo te has sentido en los últimos 6 meses. Estas preguntas exploran patrones mentales que pueden estar limitando tu potencial sin que lo notes conscientemente.","Estas preguntas exploran experiencias emocionales del pasado que pueden seguir influyendo en tu presente. Responde desde lo que sientes, no desde lo que crees que deberías sentir.","Este bloque detecta creencias y voces internas que operan en piloto automático. Sé lo más honesto/a posible: no hay respuestas correctas ni incorrectas."][q.partIndex]}</p>
             </div>
           </div>
-        );
+        )}
 
-        if (screen === "quiz") return (
-          <div className="min-h-screen flex flex-col p-4" style={{background:"#f8fafc"}}>
-            <div className="max-w-lg w-full mx-auto">
-              <div className="mb-5">
-                <div className="flex justify-between text-xs mb-1">
-                  <span className="font-semibold" style={{color:part.color}}>{part.emoji} {part.name}</span>
-                  <span className="text-slate-400">{cur + 1} / {TOTAL}</span>
-                </div>
-                <div className="w-full rounded-full h-2" style={{background:"#e2e8f0"}}>
-                  <div className="h-2 rounded-full transition-all duration-500" style={{width:`${progress}%`,background:`linear-gradient(90deg,${part.g[0]},${part.g[1]})`}} />
-                </div>
-                <div className="text-xs text-slate-400 mt-1">{q.subName}</div>
-              </div>
-
-              {cur === PARTS.slice(0,q.partIndex).reduce((a,p)=>a+p.subs.reduce((b,s)=>b+s.questions.length,0),0) && (
-                <div className="rounded-2xl p-4 mb-4 flex gap-3 items-start" style={{background:`${part.color}12`,border:`1px solid ${part.color}30`}}>
-                  <span style={{fontSize:24,flexShrink:0}}>{part.emoji}</span>
-                  <div>
-                    <div className="font-bold text-sm mb-0.5" style={{color:part.color}}>{part.name}</div>
-                    <p className="text-slate-600 text-xs leading-relaxed">{["Responde con honestidad cómo te has sentido en los últimos 6 meses. Estas preguntas exploran patrones mentales que pueden estar limitando tu potencial sin que lo notes conscientemente.","Estas preguntas exploran experiencias emocionales del pasado que pueden seguir influyendo en tu presente. Responde desde lo que sientes, no desde lo que crees que deberías sentir.","Este bloque detecta creencias y voces internas que operan en piloto automático. Sé lo más honesto/a posible: no hay respuestas correctas ni incorrectas."][q.partIndex]}</p>
-                  </div>
-                </div>
-              )}
-
-              <div style={{opacity:visible?1:0,transform:visible?"translateX(0)":"translateX(-30px)",transition:"all 0.28s ease"}}>
-                <div className="bg-white rounded-2xl shadow-xl p-7 mb-4">
-                  <p className="text-slate-800 text-lg font-semibold leading-relaxed">{q.text}</p>
-                </div>
-                <div className="bg-white rounded-2xl shadow-xl p-5">
-                  <p className="text-slate-400 text-xs text-center mb-4">Selecciona con qué frecuencia te identificas</p>
-                  <div className="flex gap-3 justify-center">
-                    {SCALE.map(({value, label, emoji}) => (
-                      <button key={value} onClick={() => go(value)}
-                        className="flex-1 flex flex-col items-center gap-1 py-4 rounded-xl border-2 transition-all duration-150"
-                        style={{borderColor:selected===value?part.color:"#e2e8f0",background:selected===value?`${part.color}18`:"white"}}>
-                        <span style={{fontSize:28}}>{emoji}</span>
-                        <span className="font-black text-xl" style={{color:selected===value?part.color:"#94a3b8"}}>{value}</span>
-                        <span className="text-slate-400 text-xs text-center leading-tight">{label}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                {cur > 0 && <button onClick={back} className="mt-3 w-full text-center text-slate-400 text-sm py-2">← Pregunta anterior</button>}
-              </div>
-            </div>
+        <div style={{opacity:visible?1:0,transform:visible?"translateX(0)":"translateX(-30px)",transition:"all 0.28s ease"}}>
+          <div className="bg-white rounded-2xl shadow-xl p-7 mb-4">
+            <p className="text-slate-800 text-lg font-semibold leading-relaxed">{q.text}</p>
           </div>
-        );
-
-        if (screen === "capture") return (
-          <div className="min-h-screen flex items-center justify-center p-6" style={{background:"#f8fafc"}}>
-            <div className="max-w-md w-full">
-              <div className="text-center mb-8">
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{background:"#eef2ff",fontSize:32}}>🎉</div>
-                <h2 className="text-2xl font-black text-slate-800 mb-2">¡Test completado!</h2>
-                <p className="text-slate-500 text-sm">Ingresa tus datos para ver tu diagnóstico personalizado</p>
-              </div>
-              <div className="bg-white rounded-2xl shadow-xl p-7 space-y-4">
-                <div>
-                  <label className="text-sm font-semibold text-slate-600 block mb-1">Nombre completo</label>
-                  <input type="text" placeholder="Tu nombre" value={userInfo.name}
-                    onChange={e => setUserInfo(p => ({...p, name: e.target.value}))}
-                    style={{width:"100%",border:"2px solid #e2e8f0",borderRadius:"12px",padding:"12px 16px",color:"#334155",outline:"none"}} />
-                </div>
-                <div>
-                  <label className="text-sm font-semibold text-slate-600 block mb-1">Correo electrónico</label>
-                  <input type="email" placeholder="tu@correo.com" value={userInfo.email}
-                    onChange={e => setUserInfo(p => ({...p, email: e.target.value}))}
-                    style={{width:"100%",border:"2px solid #e2e8f0",borderRadius:"12px",padding:"12px 16px",color:"#334155",outline:"none"}} />
-                </div>
-                <button onClick={handleShowResults} disabled={!userInfo.name || !userInfo.email || sending}
-                  className="w-full py-4 rounded-2xl font-bold text-white text-lg shadow-lg"
-                  style={{background:"linear-gradient(135deg,#6366f1,#8b5cf6)",opacity:(!userInfo.name||!userInfo.email)?0.4:1,cursor:(!userInfo.name||!userInfo.email)?"not-allowed":"pointer"}}>
-                  {sending ? "Enviando..." : "Ver mi Diagnóstico →"}
+          <div className="bg-white rounded-2xl shadow-xl p-5">
+            <p className="text-slate-400 text-xs text-center mb-4">Selecciona con qué frecuencia te identificas</p>
+            <div className="flex gap-3 justify-center">
+              {SCALE.map(({value, label, emoji}) => (
+                <button key={value} onClick={() => go(value)}
+                  className="flex-1 flex flex-col items-center gap-1 py-4 rounded-xl border-2 transition-all duration-150"
+                  style={{borderColor:selected===value?part.color:"#e2e8f0",background:selected===value?`${part.color}18`:"white"}}>
+                  <span style={{fontSize:28}}>{emoji}</span>
+                  <span className="font-black text-xl" style={{color:selected===value?part.color:"#94a3b8"}}>{value}</span>
+                  <span className="text-slate-400 text-xs text-center leading-tight">{label}</span>
                 </button>
-                <p className="text-slate-400 text-xs text-center">Tu información es confidencial</p>
-              </div>
+              ))}
             </div>
           </div>
-        );
+          {cur > 0 && <button onClick={back} className="mt-3 w-full text-center text-slate-400 text-sm py-2">← Pregunta anterior</button>}
+        </div>
+      </div>
+    </div>
+  );
 
-        return (
-          <div className="min-h-screen p-4" style={{background:"#f8fafc"}}>
-            <div className="max-w-2xl mx-auto">
-              <div className="text-center mb-7">
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3" style={{background:"#eef2ff",fontSize:34}}>🧬</div>
-                <h2 className="text-3xl font-black text-slate-800 mb-1">Tu Diagnóstico Mental</h2>
-                <p className="text-slate-500 text-sm">Hola {userInfo.name} · Test Integral de Reprogramación Mental</p>
+  if (screen === "capture") return (
+    <div className="min-h-screen flex items-center justify-center p-6" style={{background:"#f8fafc"}}>
+      <div className="max-w-md w-full">
+        <div className="text-center mb-8">
+          <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{background:"#eef2ff",fontSize:32}}>🎉</div>
+          <h2 className="text-2xl font-black text-slate-800 mb-2">¡Test completado!</h2>
+          <p className="text-slate-500 text-sm">Ingresa tus datos para ver tu diagnóstico personalizado</p>
+        </div>
+        <div className="bg-white rounded-2xl shadow-xl p-7 space-y-4">
+          <div>
+            <label className="text-sm font-semibold text-slate-600 block mb-1">Nombre completo</label>
+            <input type="text" placeholder="Tu nombre" value={userInfo.name}
+              onChange={e => setUserInfo(p => ({...p, name: e.target.value}))}
+              style={{width:"100%",border:"2px solid #e2e8f0",borderRadius:12,padding:"12px 16px",color:"#334155",outline:"none"}} />
+          </div>
+          <div>
+            <label className="text-sm font-semibold text-slate-600 block mb-1">Correo electrónico</label>
+            <input type="email" placeholder="tu@correo.com" value={userInfo.email}
+              onChange={e => setUserInfo(p => ({...p, email: e.target.value}))}
+              style={{width:"100%",border:"2px solid #e2e8f0",borderRadius:12,padding:"12px 16px",color:"#334155",outline:"none"}} />
+          </div>
+          <button onClick={handleShowResults} disabled={!userInfo.name || !userInfo.email || sending}
+            className="w-full py-4 rounded-2xl font-bold text-white text-lg shadow-lg"
+            style={{background:"linear-gradient(135deg,#6366f1,#8b5cf6)",opacity:(!userInfo.name||!userInfo.email)?0.4:1,borderRadius:16}}>
+            {sending ? "Enviando..." : "Ver mi Diagnóstico →"}
+          </button>
+          <p className="text-slate-400 text-xs text-center">Tu información es confidencial</p>
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen p-4" style={{background:"#f8fafc"}}>
+      <div className="max-w-2xl mx-auto">
+        <div className="text-center mb-7">
+          <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3" style={{background:"#eef2ff",fontSize:34}}>🧬</div>
+          <h2 className="text-3xl font-black text-slate-800 mb-1">Tu Diagnóstico Mental</h2>
+          <p className="text-slate-500 text-sm">Hola {userInfo.name} · Test Integral de Reprogramación Mental</p>
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-xl p-5 mb-5">
+          <h3 className="font-bold text-slate-700 text-center mb-4 text-sm uppercase tracking-wider">Mapa de Intensidad General</h3>
+          <ResponsiveContainer width="100%" height={220}>
+            <BarChart data={radarData} barSize={48} margin={{top:8,right:16,left:-10,bottom:8}}>
+              <XAxis dataKey="subject" tick={{fill:"#64748b",fontSize:12,fontWeight:700}} axisLine={false} tickLine={false} />
+              <YAxis domain={[0,100]} tick={{fill:"#94a3b8",fontSize:11}} axisLine={false} tickLine={false} tickFormatter={v=>v+"%"} />
+              <Tooltip formatter={(v)=>[v+"%","Intensidad"]} cursor={{fill:"#f1f5f9"}} contentStyle={{borderRadius:12,border:"none"}} />
+              <Bar dataKey="score" radius={[10,10,0,0]}>
+                {radarData.map((_, i) => <Cell key={i} fill={[PARTS[0].color,PARTS[1].color,PARTS[2].color][i]} />)}
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+
+        {partScores.map(p => (
+          <div key={p.id} className="bg-white rounded-2xl shadow-xl p-6 mb-4">
+            <div className="flex items-center justify-between mb-3">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span style={{fontSize:20}}>{p.emoji}</span>
+                  <h4 className="font-bold text-slate-800">{p.name}</h4>
+                </div>
+                <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{background:`${p.color}20`,color:p.color}}>{p.label}</span>
               </div>
-
-              <div className="bg-white rounded-2xl shadow-xl p-5 mb-5">
-                <h3 className="font-bold text-slate-700 text-center mb-4 text-sm uppercase tracking-wider">Mapa de Intensidad General</h3>
-                <ResponsiveContainer width="100%" height={220}>
-                  <BarChart data={radarData} barSize={48} margin={{top:8,right:16,left:-10,bottom:8}}>
-                    <XAxis dataKey="subject" tick={{fill:"#64748b",fontSize:12,fontWeight:700}} axisLine={false} tickLine={false} />
-                    <YAxis domain={[0,100]} tick={{fill:"#94a3b8",fontSize:11}} axisLine={false} tickLine={false} tickFormatter={v=>`${v}%`} />
-                    <Tooltip formatter={(v)=>[`${v}%`,"Intensidad"]} cursor={{fill:"#f1f5f9"}} contentStyle={{borderRadius:12,border:"none"}} />
-                    <Bar dataKey="score" radius={[10,10,0,0]}>
-                      {radarData.map((_, i) => <Cell key={i} fill={[PARTS[0].color,PARTS[1].color,PARTS[2].color][i]} />)}
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
+              <div className="text-right">
+                <div className="text-3xl font-black" style={{color:p.color}}>{p.score}</div>
+                <div className="text-xs text-slate-400">/ {p.max}</div>
               </div>
-
-              {partScores.map(p => (
-                <div key={p.id} className="bg-white rounded-2xl shadow-xl p-6 mb-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <span style={{fontSize:20}}>{p.emoji}</span>
-                        <h4 className="font-bold text-slate-800">{p.name}</h4>
-                      </div>
-                      <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{background:`${p.color}20`,color:p.color}}>{p.label}</span>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-3xl font-black" style={{color:p.color}}>{p.score}</div>
-                      <div className="text-xs text-slate-400">/ {p.max}</div>
-                    </div>
+            </div>
+            <div className="w-full rounded-full h-2.5 mb-4" style={{background:"#f1f5f9"}}>
+              <div className="h-2.5 rounded-full" style={{width:`${(p.score/p.max)*100}%`,background:`linear-gradient(90deg,${p.g[0]},${p.g[1]})`}} />
+            </div>
+            <div className="space-y-2">
+              {p.subScores.map(s => (
+                <div key={s.name} className="flex items-center gap-3">
+                  <div className="text-xs text-slate-500 flex-shrink-0" style={{width:160,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{s.name}</div>
+                  <div className="flex-1 rounded-full h-1.5" style={{background:"#f1f5f9"}}>
+                    <div className="h-1.5 rounded-full" style={{width:`${(s.score/s.max)*100}%`,background:s.color}} />
                   </div>
-                  <div className="w-full rounded-full h-2.5 mb-4" style={{background:"#f1f5f9"}}>
-                    <div className="h-2.5 rounded-full" style={{width:`${(p.score/p.max)*100}%`,background:`linear-gradient(90deg,${p.g[0]},${p.g[1]})`}} />
-                  </div>
-                  <div className="space-y-2">
-                    {p.subScores.map(s => (
-                      <div key={s.name} className="flex items-center gap-3">
-                        <div className="text-xs text-slate-500 flex-shrink-0" style={{width:"160px",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}} title={s.name}>{s.name}</div>
-                        <div className="flex-1 rounded-full h-1.5" style={{background:"#f1f5f9"}}>
-                          <div className="h-1.5 rounded-full" style={{width:`${(s.score/s.max)*100}%`,background:s.color}} />
-                        </div>
-                        <span className="text-xs font-semibold" style={{color:s.color,width:"56px",textAlign:"right"}}>{s.label}</span>
-                      </div>
-                    ))}
-                  </div>
+                  <span className="text-xs font-semibold" style={{color:s.color,width:56,textAlign:"right"}}>{s.label}</span>
                 </div>
               ))}
-
-              <div className="bg-white rounded-2xl shadow-xl p-6 mb-5" style={{borderLeft:"4px solid #6366f1"}}>
-                <h3 className="font-bold text-slate-800 mb-2">💬 Diagnóstico Rápido</h3>
-                <p className="text-slate-600 leading-relaxed text-sm">
-                  Tu área de mayor intensidad es <strong style={{color:dominant.color}}>{dominant.name}</strong> con nivel <strong>{dominant.label}</strong>. {getLevelDesc(dominant.label)} Los patrones detectados son señales de programación inconsciente que opera en segundo plano. La buena noticia: todo esto es reprogramable.
-                </p>
-              </div>
-
-              <div className="rounded-2xl p-8 text-center shadow-xl mb-6" style={{background:"linear-gradient(135deg,#eef2ff,#f5f3ff)",border:"1px solid #c7d2fe"}}>
-                <h3 className="text-2xl font-black text-slate-800 mb-2">Tu Próximo Paso</h3>
-                <p className="text-slate-600 mb-6 leading-relaxed text-sm">Ahora tienes claridad sobre tus patrones mentales. En 15 minutos podemos crear un plan de acción personalizado para iniciar tu proceso de reprogramación.</p>
-                <a href="https://calendar.app.google/LUPbVy9CGFr2sWU98" target="_blank" rel="noopener noreferrer"
-                  className="inline-block w-full py-4 rounded-2xl font-bold text-white text-lg shadow-lg"
-                  style={{background:"linear-gradient(135deg,#6366f1,#8b5cf6)"}}>
-                  🗓 Agendar Sesión de Claridad (15 min)
-                </a>
-                <p className="text-slate-400 text-xs mt-3">Sesión gratuita · Sin compromiso</p>
-              </div>
-
-              <button onClick={() => { setScreen("welcome"); setCur(0); setAnswers({}); setSelected(null); setSent(false); }}
-                className="w-full py-3 rounded-2xl text-slate-400 text-sm border border-slate-200 mb-8">
-                Reiniciar test
-              </button>
             </div>
           </div>
-        );
-      }
+        ))}
 
-      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+        <div className="bg-white rounded-2xl shadow-xl p-6 mb-5" style={{borderLeft:"4px solid #6366f1"}}>
+          <h3 className="font-bold text-slate-800 mb-2">💬 Diagnóstico Rápido</h3>
+          <p className="text-slate-600 leading-relaxed text-sm">
+            Tu área de mayor intensidad es <strong style={{color:dominant.color}}>{dominant.name}</strong> con nivel <strong>{dominant.label}</strong>. {getLevelDesc(dominant.label)} Los patrones detectados son señales de programación inconsciente que opera en segundo plano. La buena noticia: todo esto es reprogramable.
+          </p>
+        </div>
+
+        <div className="rounded-2xl p-8 text-center shadow-xl mb-6" style={{background:"linear-gradient(135deg,#eef2ff,#f5f3ff)",border:"1px solid #c7d2fe"}}>
+          <h3 className="text-2xl font-black text-slate-800 mb-2">Tu Próximo Paso</h3>
+          <p className="text-slate-600 mb-6 leading-relaxed text-sm">Ahora tienes claridad sobre tus patrones mentales. En 15 minutos podemos crear un plan de acción personalizado para iniciar tu proceso de reprogramación.</p>
+          <a href="https://calendar.app.google/LUPbVy9CGFr2sWU98" target="_blank" rel="noopener noreferrer"
+            className="inline-block w-full py-4 font-bold text-white text-lg shadow-lg"
+            style={{background:"linear-gradient(135deg,#6366f1,#8b5cf6)",borderRadius:16,display:"block"}}>
+            🗓 Agendar Sesión de Claridad (15 min)
+          </a>
+          <p className="text-slate-400 text-xs mt-3">Sesión gratuita · Sin compromiso</p>
+        </div>
+
+        <button onClick={() => { setScreen("welcome"); setCur(0); setAnswers({}); setSelected(null); }}
+          className="w-full py-3 text-slate-400 text-sm mb-8"
+          style={{border:"1px solid #e2e8f0",borderRadius:16}}>
+          Reiniciar test
+        </button>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     </script>
   </body>
 </html>
